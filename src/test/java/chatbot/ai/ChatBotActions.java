@@ -152,24 +152,7 @@ public class ChatBotActions {
 		return direct;
 	}
 
-	
-//	public static int greetingReply(WebDriver driver) throws InterruptedException {
-//		// opening the shadow
-//		WebElement host = driver.findElement(By.cssSelector("my-component"));
-//		SearchContext root = host.getShadowRoot();
-//
-//		// counting the current bot reply
-//		int initialCount = root.findElements(By.cssSelector("div[class*='AiText-module_textContainer']")).size();
-//
-//		WebElement chatInput = root.findElement(By.cssSelector("textarea[role='textbox'][aria-label='Chat input']"));
-//		chatInput.click();
-//		chatInput.sendKeys("Hi");
-//		root.findElement(By.cssSelector("button.ChatInputBox-module_sdkSendButton__CLWm6")).click();
-//		Thread.sleep(4000);
-//		return initialCount;
-//
-//
-//	}
+
 	public static String greetingReply(WebDriver driver) throws InterruptedException {
 	    // opening the shadow root
 	    WebElement host = driver.findElement(By.cssSelector("my-component"));
