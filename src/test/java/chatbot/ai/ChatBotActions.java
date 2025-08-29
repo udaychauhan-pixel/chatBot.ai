@@ -158,10 +158,7 @@ public class ChatBotActions {
 	    WebElement host = driver.findElement(By.cssSelector("my-component"));
 	    SearchContext root = host.getShadowRoot();
 
-	    // getting the count of replies before sending greeting
-	    int initialCount = root.findElements(By.cssSelector("div[class*='AiText-module_textContainer']")).size();
-
-	   //Hi
+	    //Hi
 	    WebElement chatInput = root.findElement(By.cssSelector("textarea[role='textbox'][aria-label='Chat input']"));
 	    chatInput.click();
 	    chatInput.sendKeys("Hi");
@@ -181,12 +178,22 @@ public class ChatBotActions {
 
 	    String direct = lastReply.getText().trim();
 	    System.out.println("Bot Reply after greeting: " + direct);
+	
+	 // wait until the 3 suggestion items show after greetings
+	    new WebDriverWait(driver, Duration.ofSeconds(10)).until(d ->
+	            root.findElements(By.cssSelector("h1[class*='suggestiveResponse']")).size() >= 3);
+
+	    // collecting the suggestions and counting them
+	    List<WebElement> greetSuggestions =
+	            root.findElements(By.cssSelector("h1[class*='suggestiveResponse']"));
+
+	    int greetCount = greetSuggestions.size();
+	    System.out.println("Suggestions after greeting: " + greetCount); 
+
 
 	    return direct;
 	}
 	
-	
-
 	
 	
 }
