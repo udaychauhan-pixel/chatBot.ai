@@ -194,6 +194,33 @@ public class ChatBotActions {
 	    return direct;
 	}
 	
+	public static void clickRandomSuggestion(WebDriver driver) throws InterruptedException {
+	    // open shadow root
+	    WebElement host = driver.findElement(By.cssSelector("my-component"));
+	    SearchContext root = host.getShadowRoot();
+
+	    // Storing the responses in a variable
+	    String sugTn = "h1[class*='suggestiveResponse']";
+
+	    // clicking the responses
+	    for (int i = 0; i < 3; i++) {
+	       
+	        List<WebElement> suggestions = root.findElements(By.cssSelector(sugTn));
+	        if (i >= suggestions.size()) {
+	            break;
+	        }
+
+	        Thread.sleep(2000);
+	        WebElement choice = suggestions.get(i);
+	        String label = choice.getText().trim();
+	        System.out.println("Clicking suggestion -> " + label);
+	        choice.click();
+
+
+	    }
+	}
+
+	
 	
 	
 }

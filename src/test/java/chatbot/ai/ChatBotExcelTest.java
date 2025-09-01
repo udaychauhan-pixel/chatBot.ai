@@ -83,6 +83,7 @@ public class ChatBotExcelTest {
 		ChatBotActions.scheduleMeeting(driver);
 		ChatBotActions.getLastReply(driver);
 		ChatBotActions.greetingReply(driver);
+		ChatBotActions.clickRandomSuggestion(driver);
 		ChatBotActions.closeChatBot(driver);
 	}
 
